@@ -31,7 +31,7 @@ const formHTML = (formId, error = '') => `
   </form>
   <p>You muse use your Campfire-registered POC email to continue to this form</p>
   <br>
-  <p>Have issues? Email <a href="mailto:leo@hackclub.com">Shoot Leo an email</a> or ask your RM.</p>
+  <p>Have issues? <a href="mailto:leo@hackclub.com">Shoot Leo an email</a> or ask your RM.</p>
 </body>
 </html>
 `;
