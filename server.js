@@ -30,7 +30,7 @@ const formHTML = (formId, error = '') => `
     <input type="email" name="email" placeholder="Enter your email" required autofocus>
     <button type="submit">Continue to Form</button>
   </form>
-  <p>You muse use your Campfire-registered POC email to continue to this form</p>
+  <p>You must use your Campfire-registered POC email to continue to this form</p>
   <br>
   <p>Have issues? <a href="mailto:leo@hackclub.com">Shoot Leo an email</a> or ask your RM.</p>
 </body>
@@ -59,7 +59,7 @@ const participantFormHTML = (formId, error = '') => `
     <input type="email" name="email" placeholder="Enter your email" required autofocus>
     <button type="submit">Continue to Form</button>
   </form>
-  <p>You muse use the email you used to sign up for Campfire to continue with this form.</p>
+  <p>You must use the email you used to sign up for Campfire to continue with this form.</p>
   <br>
   <p>Have issues? <a href="mailto:campfire@hackclub.com">Send us an email!</a></p>
 </body>
@@ -148,7 +148,7 @@ app.post('/participant/:formId', async (req, res) => {
 
     if (records.length === 0) {
       console.log(`[SEARCH] No match for email: "${sanitizedEmail}"`);
-      return res.send(formHTML(formId, 'No matching record found for that email.'));
+      return res.send(participantFormHTML(formId, 'No matching record found for that email.'));
     }
 
     const record = records[0];
@@ -162,7 +162,7 @@ app.post('/participant/:formId', async (req, res) => {
   } catch (err) {
     console.error('[SEARCH] Airtable error:', err.message);
     console.error('[SEARCH] Full error:', err);
-    res.send(formHTML(formId, 'Something went wrong. Please try again.'));
+    res.send(participantFormHTML(formId, 'Something went wrong. Please try again.'));
   }
 });
 
